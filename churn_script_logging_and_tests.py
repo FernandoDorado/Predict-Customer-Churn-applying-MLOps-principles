@@ -14,13 +14,15 @@ Date: March 2022
 import os
 import logging
 import churn_library as cls
+import numpy as np
 
 logging.basicConfig(
-    filename='./logs/churn_library.log',
-    level = logging.INFO,
+    filename='./logs/churn_script_tests.log',
+    level=logging.INFO,
     filemode='w',
     format='%(name)s - %(levelname)s - %(message)s')
 
+# Category columns from the dataframe
 CATEGORY_COLUMNS = [
     'Gender',
     'Education_Level',
@@ -55,39 +57,49 @@ def test_eda(perform_eda):
     test perform eda function
     '''
     try:
-        dataframe = test_import(cls.import_data)
+        dataframe = cls.import_data(r"./data/bank_data.csv")
         perform_eda(dataframe)
-        logging.info("SUCCESS: Testing EDA finished")
+        logging.info("Testing eda: SUCCESS")
     except BaseException:
-        logging.error("ERROR: Testing EDA failed")
-        raise 
+        logging.error("Testing eda: EDA failed")
+        raise
+
 
 def test_encoder_helper(encoder_helper):
     '''
     test encoder helper
     '''
     try:
-        dataframe = test_import(cls.import_data)
-        encoder_helper(dataframe, CATEGORY_COLUMNS, "Churn")
-        logging.info("SUCCESS: Testing encoder_helper finished")
-        return dataframe
+        df = cls.import_data(r"./data/bank_data.csv")
+        encoder_helper(df, CATEGORY_COLUMNS, "Churn")
+        logging.info("Testing encoder_helper: SUCCESS")
     except BaseException:
-        logging.error("ERROR: Testing encoder_helper failed")
+        logging.error("Testing encoder_helper: encoder_helper failed")
         raise
+
 
 def test_perform_feature_engineering(perform_feature_engineering):
     '''
     test perform_feature_engineering
     '''
     try:
-        dataframe = test_encoder_helper(cls.encoder_helper)
+        df = cls.import_data(r"./data/bank_data.csv")
+        df = cls.encoder_helper(df, CATEGORY_COLUMNS, "Churn")
+
         x_train, x_test, y_train, y_test = perform_feature_engineering(
-            dataframe, "Churn")
-        logging.info("SUCCESS: Testing FeasS")
-        return x_train, x_test, y_train, y_test
-    except BaseException:
+            df, "Churn")
+
+        assert np.array(x_train).shape[0] == 7088
+        assert np.array(x_test).shape[0] == 3039
+        assert np.array(y_train).shape[0] == 7088
+        assert np.array(y_test).shape[0] == 3039
+
+        logging.info("Testing feature engineering: SUCCESS")
+
+    except AssertionError as err:
+
         logging.error(
-            "ERROR: Testing test_perform_feature_engineering failed")
+            "Testing perform_feature_engineering: The split doesn't appear to have the exact number of rows and columns")
         raise
 
 
@@ -96,8 +108,13 @@ def test_train_models(train_models):
     test train_models
     '''
     try:
-        x_train, x_test, y_train, y_test = test_perform_feature_engineering(
-            cls.perform_feature_engineering)
+
+        df = cls.import_data(r"./data/bank_data.csv")
+        df = cls.encoder_helper(df, CATEGORY_COLUMNS, "Churn")
+
+        x_train, x_test, y_train, y_test = cls.perform_feature_engineering(
+            df, "Churn")
+
         train_models(x_train, x_test, y_train, y_test)
         logging.info("SUCCESS: Testing test_train_models")
     except BaseException:
@@ -112,11 +129,3 @@ if __name__ == "__main__":
     test_encoder_helper(cls.encoder_helper)
     test_perform_feature_engineering(cls.perform_feature_engineering)
     test_train_models(cls.train_models)
-
-
-
-
-
-
-
-

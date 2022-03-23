@@ -14,19 +14,12 @@ By following the instructions below it is possible to run the project. The first
 
 ```pip install -r requirements.txt```
 
-After that, you can run the analysis with:
+The script will use churn_library.py and perform the analysis. EDA plots will be stored in the path 'images/eda'. The results plots will appear in 'images/results'. In this path, you can find the best saved models.
+
+```python churn_library.py```
+
+In case of modifications, you can carry out some tests using the following code in CMD:
 
 ```python churn_script_logging_and_tests.py```
 
-The script will use churn_library.py and perform the analysis. EDA plots will be stored in the path 'images/eda'. The results plots will appear in 'images/results'. In this path, you can find the best saved models.
-
-To test our scripts, multiple tests have been implemented and can be run by entering: 
-
-```pytest churn_script_logging_and_tests.py```
-
-In order to test the functions individually, execute the following command:
-
-```pytest churn_script_logging_and_tests.py::test_import ```
-
-All the logs are stored in logs/churn_library.log
 
