@@ -60,7 +60,17 @@ def test_eda(perform_eda):
         df = cls.import_data(r"./data/bank_data.csv")
         assert df.shape[0] > 0
         assert df.shape[1] > 0
+
         perform_eda(df)
+
+        assert os.path.isfile(
+            './images/eda/bivariate_Churn_and_Customer_Age.png')
+        assert os.path.isfile('./images/eda/churn.png')
+        assert os.path.isfile('./images/eda/customer_Age.png')
+        assert os.path.isfile(
+            './images/eda/heatmap_df_corr.png')
+        assert os.path.isfile('./images/eda/marital_status.png')
+
         logging.info("Testing eda: SUCCESS")
     except BaseException:
         logging.error("Testing eda: EDA failed")
@@ -75,6 +85,7 @@ def test_encoder_helper(encoder_helper):
         df = cls.import_data(r"./data/bank_data.csv")
         assert df.shape[0] > 0
         assert df.shape[1] > 0
+        assert len(CATEGORY_COLUMNS) > 0
         encoder_helper(df, CATEGORY_COLUMNS, "Churn")
         logging.info("Testing encoder_helper: SUCCESS")
     except BaseException:
