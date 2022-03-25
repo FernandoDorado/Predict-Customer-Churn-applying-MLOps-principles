@@ -1,0 +1,29 @@
+root - INFO - SUCCESS: Read file at ./data/bank_data.csv with 10127 rows
+root - INFO -  SUCCESS: Data Imported
+root - INFO - SUCCESS: Read file at ./data/bank_data.csv with 10127 rows
+root - INFO - SUCCESS: EDA performed
+root - INFO - Testing eda: SUCCESS
+root - INFO - SUCCESS: Read file at ./data/bank_data.csv with 10127 rows
+root - INFO - Calculating churn proportion for Gender column
+root - INFO - Calculating churn proportion for Education_Level column
+root - INFO - Calculating churn proportion for Marital_Status column
+root - INFO - Calculating churn proportion for Income_Category column
+root - INFO - Calculating churn proportion for Card_Category column
+root - INFO - Testing encoder_helper: SUCCESS
+root - INFO - SUCCESS: Read file at ./data/bank_data.csv with 10127 rows
+root - INFO - Calculating churn proportion for Gender column
+root - INFO - Calculating churn proportion for Education_Level column
+root - INFO - Calculating churn proportion for Marital_Status column
+root - INFO - Calculating churn proportion for Income_Category column
+root - INFO - Calculating churn proportion for Card_Category column
+root - INFO - SUCCESS: Feature Engineering (FeaS) performed. Shapes: X_train 7088 X_test 3039 y_train 7088 y_test 3039
+root - INFO - Testing feature engineering: SUCCESS
+root - INFO - SUCCESS: Read file at ./data/bank_data.csv with 10127 rows
+root - INFO - Calculating churn proportion for Gender column
+root - INFO - Calculating churn proportion for Education_Level column
+root - INFO - Calculating churn proportion for Marital_Status column
+root - INFO - Calculating churn proportion for Income_Category column
+root - INFO - Calculating churn proportion for Card_Category column
+root - INFO - SUCCESS: Feature Engineering (FeaS) performed. Shapes: X_train 7088 X_test 3039 y_train 7088 y_test 3039
+root - INFO - SUCCESS: Saving graph for feature importance in ./images/results/rfc_feature_importance.png feature_importance_graph.png
+root - INFO - SUCCESS: Testing test_train_models
