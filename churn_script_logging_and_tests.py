@@ -57,8 +57,10 @@ def test_eda(perform_eda):
     test perform eda function
     '''
     try:
-        dataframe = cls.import_data(r"./data/bank_data.csv")
-        perform_eda(dataframe)
+        df = cls.import_data(r"./data/bank_data.csv")
+        assert df.shape[0] > 0
+        assert df.shape[1] > 0
+        perform_eda(df)
         logging.info("Testing eda: SUCCESS")
     except BaseException:
         logging.error("Testing eda: EDA failed")
@@ -71,6 +73,8 @@ def test_encoder_helper(encoder_helper):
     '''
     try:
         df = cls.import_data(r"./data/bank_data.csv")
+        assert df.shape[0] > 0
+        assert df.shape[1] > 0
         encoder_helper(df, CATEGORY_COLUMNS, "Churn")
         logging.info("Testing encoder_helper: SUCCESS")
     except BaseException:
