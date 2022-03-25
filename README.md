@@ -8,6 +8,30 @@ Predicting customer churn is a challenging but extremely important business prob
 
 The primary objective of the customer churn predictive model is to retain customers at the highest risk of churn by proactively engaging with them. For example: Offer a gift voucher or any promotional pricing and lock them in for an additional year or two to extend their lifetime value to the company.
 
+## Files in the Repo
+- data
+    * bank_data.csv : Data used in this project (21 columns).
+
+- images
+    * eda
+        *   churn.png : Histogram of the target ("churn") column.
+        *   customer_Age.png : Historgram of the age of the people in the dataset.
+        *   heatmap_df_corr.png : Correlation matrix (in heatmap format) between the columns in the dataset. 
+        *   marital_status.png : Histogram of the marital status in the dataset.
+        *   total_transaction_distribution.png : Histogram of the transactions in the dataset. 
+    *   results
+        *   rfc_feature_importance.png feature_importance_graph.png : Feature importance by column respect to the target.
+        *   training_results.png : Training results in both Random Forest and Logistic Regression (ROC and AUC included).
+-   logs
+    *   churn_library.log : Generated logs during the execution. 
+-   models
+    *   logistic_model.pkl : Best Logistic Regression model. 
+    *   rfc_model.pkl : Best Random Forest model. 
+-   churn_library.py : Main code of the project. It contains all the required functions to complete EDA, FeaS and Train models. 
+-   churn_notebook.ipynb: Notebook with different analysis, plots, and training process. 
+-   churn_script_logging_and_tests.py : Script with different tests to ensure the correct performance of the functions in churn_library.py
+-   README.md : README with all the instructions and details about the project. 
+
 
 ## Running Files
 By following the instructions below it is possible to run the project. The first step is to install the necessary dependencies
